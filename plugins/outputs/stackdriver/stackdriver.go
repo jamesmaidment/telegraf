@@ -65,6 +65,24 @@ func (s *GCPStackdriver) Write(metrics []telegraf.Metric) error {
 	for _, m := range metrics {
 		// Writes time series data
 		for k, v := range m.Fields() {
+			var value *monitoringpb.TypedValue
+
+			switch vt := v.(type) {
+			case float64:
+				value = &monitoringpb.TypedValue{
+					Value: &monitoringpb.TypedValue_DoubleValue{
+						DoubleValue: v.(float64),
+					},
+				}
+			case int64:
+				value = &monitoringpb.TypedValue{
+					Value: &monitoringpb.TypedValue_Int64Value{
+						Int64Value: v.(int64),
+					},
+				}
+			default:
+				return fmt.Errorf("Unsupported type %T", vt)
+			}
 
 			// Prepares an individual data point
 			dataPoint := &monitoringpb.Point{
@@ -73,11 +91,7 @@ func (s *GCPStackdriver) Write(metrics []telegraf.Metric) error {
 						Seconds: time.Now().Unix(),
 					},
 				},
-				Value: &monitoringpb.TypedValue{
-					Value: &monitoringpb.TypedValue_DoubleValue{
-						DoubleValue: v.(float64),
-					},
-				},
+				Value: value,
 			}
 
 			if err := s.client.CreateTimeSeries(ctx, &monitoringpb.CreateTimeSeriesRequest{
