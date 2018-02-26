@@ -30,13 +30,17 @@ var sampleConfig = `
   project = "projects/erudite-bloom-151019"
 
   # The namespace for the metric descriptor
-  #namespace = "telegraf"
+  namespace = "telegraf"
 `
 
 // Connect initiates the primary connection to the GCP project
 func (s *GCPStackdriver) Connect() error {
 	if s.Project == "" {
 		return fmt.Errorf("Project is a required field for stackdriver output")
+	}
+
+	if s.Namespace == "" {
+		return fmt.Errorf("Namespace is a required field for stackdriver output")
 	}
 
 	if s.client == nil {
