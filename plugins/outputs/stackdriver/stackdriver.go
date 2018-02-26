@@ -79,6 +79,18 @@ func (s *GCPStackdriver) Write(metrics []telegraf.Metric) error {
 						Int64Value: v.(int64),
 					},
 				}
+			case bool:
+				value = &monitoringpb.TypedValue{
+					Value: &monitoringpb.TypedValue_BoolValue{
+						BoolValue: v.(bool),
+					},
+				}
+			case string:
+				value = &monitoringpb.TypedValue{
+					Value: &monitoringpb.TypedValue_StringValue{
+						StringValue: v.(string),
+					},
+				}
 			default:
 				return fmt.Errorf("Unsupported type %T", vt)
 			}
