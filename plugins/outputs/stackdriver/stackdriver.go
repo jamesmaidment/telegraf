@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"path"
-	"time"
 
 	"github.com/influxdata/telegraf"
 	"github.com/influxdata/telegraf/plugins/outputs"
@@ -88,7 +87,7 @@ func (s *GCPStackdriver) Write(metrics []telegraf.Metric) error {
 			dataPoint := &monitoringpb.Point{
 				Interval: &monitoringpb.TimeInterval{
 					EndTime: &googlepb.Timestamp{
-						Seconds: time.Now().Unix(),
+						Seconds: m.Time().Unix(),
 					},
 				},
 				Value: value,
