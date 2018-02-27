@@ -133,17 +133,17 @@ func (s *GCPStackdriver) Write(metrics []telegraf.Metric) error {
 	return nil
 }
 
-// Close will terminate the session to the backend, returning error if an issue arises
+// Close will terminate the session to the backend, returning error if an issue arises.
 func (s *GCPStackdriver) Close() error {
 	return nil
 }
 
-// SampleConfig returns the formatted sample configuration for the plugin
+// SampleConfig returns the formatted sample configuration for the plugin.
 func (s *GCPStackdriver) SampleConfig() string {
 	return sampleConfig
 }
 
-// Description returns the human-readable function definition of the plugin
+// Description returns the human-readable function definition of the plugin.
 func (s *GCPStackdriver) Description() string {
 	return "Configuration for Google Cloud Stackdriver to send metrics to"
 }
