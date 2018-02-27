@@ -10,7 +10,7 @@ Metrics are grouped by the `namespace` variable and metric key - eg: `custom.goo
 ### Configuration
 
 ```
-  ## GCP Project
+  # GCP Project
   project = "erudite-bloom-151019"
 
   # The namespace for the metric descriptor
