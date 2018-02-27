@@ -25,8 +25,8 @@ type GCPStackdriver struct {
 }
 
 var sampleConfig = `
-  ## GCP Project
-  project = "projects/erudite-bloom-151019"
+  # GCP Project
+  project = "erudite-bloom-151019"
 
   # The namespace for the metric descriptor
   namespace = "telegraf"

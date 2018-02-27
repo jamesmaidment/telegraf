@@ -11,7 +11,7 @@ Metrics are grouped by the `namespace` variable and metric key - eg: `custom.goo
 
 ```
   ## GCP Project
-  project = "projects/erudite-bloom-151019"
+  project = "erudite-bloom-151019"
 
   # The namespace for the metric descriptor
   namespace = "telegraf"
