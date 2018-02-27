@@ -32,7 +32,7 @@ var sampleConfig = `
   namespace = "telegraf"
 `
 
-// Connect initiates the primary connection to the GCP project
+// Connect initiates the primary connection to the GCP project.
 func (s *GCPStackdriver) Connect() error {
 	if s.Project == "" {
 		return fmt.Errorf("Project is a required field for stackdriver output")
