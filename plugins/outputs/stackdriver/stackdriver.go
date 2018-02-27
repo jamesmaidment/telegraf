@@ -45,7 +45,7 @@ func (s *GCPStackdriver) Connect() error {
 	if s.client == nil {
 		ctx := context.Background()
 
-		// Creates a client.
+		// Creates a client
 		client, err := monitoring.NewMetricClient(ctx)
 		if err != nil {
 			return err
