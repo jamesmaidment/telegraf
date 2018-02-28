@@ -156,8 +156,7 @@ func proc(env, path string) string {
 func init() {
 	inputs.Add("wireless", func() telegraf.Input {
 		return &Wireless{
-			ProcNetWireless: "/proc/net/wireless",
-			DumpZeros:       false,
+			DumpZeros: false,
 		}
 	})
 }
